@@ -1,6 +1,8 @@
 #!/usr/bin/python
 import math
 import urllib.request
+import urllib.parse
+import requests
 from firebase import firebase
 firebase = firebase.FirebaseApplication('https://manganbak.firebaseio.com', None)
 
@@ -28,4 +30,17 @@ restoran_params = firebase.get('/dataResto', None, params={'orderBy':'"map/long"
 #still error
 
 # optional use http request
-restoran = urllib.request.urlopen('https://manganbak.firebaseio.com/dataResto.json?orderBy="map/long"&startAt=',new_lng2,'&endAt=',new_lng1).read()
+# define parameter
+# params = {
+# 	"orderBy" : "map/long",
+# 	"startAt" : new_lng2,
+# 	"endAt" : new_lng1
+# }
+# paramsencoded = urllib.parse.urlencode(params)
+
+# restoran = urllib.request.urlopen('https://manganbak.firebaseio.com/dataResto.json?'+ paramsencoded).read()
+# print(restoran)
+
+results = requests.get("https://manganbak.firebaseio.com/dataResto.json", 
+              params={'orderBy': '"map/long"', 'startAt': new_lng2, 'endAt': new_lng1})
+print(results.content)

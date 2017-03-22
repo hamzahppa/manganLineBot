@@ -1,4 +1,3 @@
-
 print "Content-type: text/html"
 print
 print "<html><head>"
