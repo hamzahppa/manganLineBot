@@ -3,6 +3,7 @@ import math
 import simplejson as json
 from pyrebase import pyrebase
 
+# configuration for firebase app
 config = {
 	"apiKey": "AIzaSyB1U7icSEQX4ZTCdsRHxDUFieD-r7sDFKA",
     "authDomain": "manganbak.firebaseapp.com",
@@ -10,11 +11,12 @@ config = {
     "storageBucket": "manganbak.appspot.com"
 }
 
-#define new firebase app
+#define new firebase app with confiq
 firebase = pyrebase.initialize_app(config)
 # define database ref
 db = firebase.database()
-restoran = firebase.database().child('dataResto')
+# define restoran as database ref for data Restaurant
+restoran = db.child('dataResto')
 
 # define constant 
 r_earth = 6378
@@ -31,7 +33,7 @@ new_lng1 = lng + (5 / r_earth) * (180 / pi) / math.cos(lat * pi/180);
 new_lng2 = lng - (5 / r_earth) * (180 / pi) / math.cos(lat * pi/180);
 print(new_lat1, new_lat2, new_lng1, new_lng2)
 
-resto = db.child('dataResto').child(0).get()
-
 # retrieve data resto by location
-restoran_rad5 = restoran.order_by_child("map/lat").start_at(new_lat1).end_at(new_lat2).shallow()
+# restoran_rad5 = restoran.order_by_child('map/long').start_at(new_lng2).end_at(new_lng1).get()
+restorans = restoran.get()
+print(restorans.val())
