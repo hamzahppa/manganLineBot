@@ -18,10 +18,10 @@ Define boundary. See code for the equation
 
 ## problem
 ### getData.py
-	1. Success retrieve data then need to query with startAt and endAt using
+1. Success retrieve data then need to query with startAt and endAt using
 	`restoran_rad5 = restoran.order_by_child("map/lat").start_at(new_lat1).end_at(new_lat2).shallow()`
-	2. Fail to read data. I dont know how to read the data
+2. Fail to read data. I dont know how to read the data
 
 ### pyfb2.py
-	1. Cannot use query because there is no function. Alternative, use the http request or use the params from this repo https://github.com/ozgur/python-firebase
+1. Cannot use query because there is no function. Alternative, use the http request or use the params from this repo https://github.com/ozgur/python-firebase
 

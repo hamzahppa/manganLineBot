@@ -23,5 +23,9 @@ print(new_lat1, new_lat2, new_lng1, new_lng2)
 # get data resto from firebase
 restorans = firebase.get('/dataResto', None)
 
+# use param to query
+restoran_params = firebase.get('/dataResto', None, params={'orderBy':'"map/long"', 'startAt': new_lng2, 'endAt': new_lng1})
+#still error
+
+# optional use http request
 restoran = urllib.request.urlopen('https://manganbak.firebaseio.com/dataResto.json?orderBy="map/long"&startAt=',new_lng2,'&endAt=',new_lng1).read()
-print(restoran)
