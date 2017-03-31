@@ -40,15 +40,17 @@ def haversine(lon1, lat1, lon2, lat2):
     return c * r_earth
 
 # see data.py
-for x, restoran in result.items():
+for x, restoran in result.iteritems():
 	if result[x]['map']['lat'] > new_lat2 and result[x]['map']['lat'] < new_lat1 :
 		d = haversine(lng, lat, result[x]['map']['long'], result[x]['map']['lat']) * 1000 #in meters
 		print result[x]['index'], d
 		distance = {'distance' : d}
 		result[x].update(distance)
-		final_result.update(result[x])
+		# print result[x]
+		# final_result.update(result[x])
+		final_result[x] = result[x]
 # will print retrieved data
 
-print final_result;
+print final_result
 
 
